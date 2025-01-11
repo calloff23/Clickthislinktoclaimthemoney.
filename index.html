@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainbow Rick Dance</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: monospace;
+      overflow: hidden;
+      margin: 0;
+    }
+    .number {
+      position: absolute;
+      font-size: 20px;
+      animation: move 5s linear infinite, rainbow 1s linear infinite;
+    }
+    @keyframes move {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
+    }
+    @keyframes rainbow {
+      0% { color: red; }
+      20% { color: orange; }
+      40% { color: yellow; }
+      60% { color: green; }
+      80% { color: blue; }
+      100% { color: violet; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const danceMoves = [
+      "💃 Rick Roll 💃",
+      "🎵 Never gonna give you up 🎵",
+      "🎶 Never gonna let you down 🎶",
+      "🎼 Never gonna run around and desert you 🎼",
+      "🎵 Never gonna make you cry 🎵",
+      "🎶 Never gonna say goodbye 🎶",
+      "🎼 Never gonna tell a lie and hurt you 🎼"
+    ];
+
+    function createNumber() {
+      const number = document.createElement("div");
+      number.classList.add("number");
+      number.textContent = Math.floor(Math.random() * 10); // Generate random number
+      number.style.left = Math.random() * window.innerWidth + "px"; // Random horizontal position
+      number.style.top = Math.random() * window.innerHeight + "px"; // Random vertical position
+      document.body.appendChild(number);
+      setTimeout(() => number.remove(), 5000); // Remove after 5 seconds
+    }
+
+    function startRickDance() {
+      setInterval(() => {
+        // Display random Rick Roll lyric in console
+        console.log(danceMoves[Math.floor(Math.random() * danceMoves.length)]);
+        // Create a new number animation
+        createNumber();
+      }, 100);
+    }
+
+    startRickDance();
+  </script>
+</body>
+</html>
